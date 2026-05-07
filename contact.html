@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>Contact — ALPHA ET OMEGA GOLD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="logo"><span class="logo-mark"></span><span class="logo-text">ALPHA &amp; OMEGA</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="index.html#gallery">Galerie</a></li>
+    <li><a href="index.html#operations">Opérations</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu">
+  <a href="index.html">Accueil</a><a href="services.html">Services</a>
+  <a href="index.html#gallery">Galerie</a><a href="index.html#operations">Opérations</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-head">
+  <div class="wrap">
+    <div class="s-label">Contact</div>
+    <h1>Parlons <em>or</em>, parlons <em>affaires</em>.</h1>
+    <p>Réponse sous 24h. Pour les demandes urgentes, appelez-nous directement.</p>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <div class="ct-grid">
+      <div class="ct-left rv">
+        <h2>Une <em>question</em> ?<br>Un <em>projet</em> ?</h2>
+        <p>Notre équipe est basée à Ouagadougou et opère dans toutes les régions aurifères du Burkina Faso.</p>
+        <div class="cm"><div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div><div><div class="cm-lbl">Téléphone</div><div class="cm-val"><a href="tel:+22600000000">+226 XX XX XX XX</a></div></div></div>
+        <div class="cm"><div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg></div><div><div class="cm-lbl">Email</div><div class="cm-val"><a href="mailto:contact@aogold.com">contact@aogold.com</a></div></div></div>
+        <div class="cm"><div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div><div><div class="cm-lbl">Siège</div><div class="cm-val">Ouagadougou, Burkina Faso</div></div></div>
+      </div>
+      <form class="ct-form rv" id="contactForm" novalidate>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <div class="form-row">
+          <div class="fg"><label for="name">Nom *</label><input type="text" id="name" name="name" required placeholder="Votre nom"></div>
+          <div class="fg"><label for="email">Email *</label><input type="email" id="email" name="email" required placeholder="vous@exemple.com"></div>
+        </div>
+        <div class="form-row">
+          <div class="fg"><label for="phone">Téléphone</label><input type="tel" id="phone" name="phone" placeholder="+226..."></div>
+          <div class="fg"><label for="subject">Objet</label>
+            <select id="subject" name="subject">
+              <option value="achat">Achat d'or</option>
+              <option value="vente">Vente (orpailleur / exploitant)</option>
+              <option value="travaux">Travaux miniers</option>
+              <option value="recherche">Recherche &amp; exploitation</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label for="message">Message *</label><textarea id="message" name="message" required placeholder="Décrivez votre projet..."></textarea></div>
+        <button type="submit" class="submit-btn">Envoyer</button>
+        <div class="form-msg" id="formMsg"></div>
+        <p class="priv">Vos données sont utilisées uniquement pour vous répondre.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand"><a href="index.html" class="logo"><span class="logo-mark"></span><span class="logo-text">ALPHA &amp; OMEGA</span></a><p>L'intermédiaire de confiance. Des orpailleurs aux comptoirs internationaux.</p></div>
+      <div class="ft-col"><h5>Services</h5><ul><li><a href="services.html">Travaux miniers</a></li><li><a href="services.html">Recherche</a></li><li><a href="services.html">Achat d'or</a></li></ul></div>
+      <div class="ft-col"><h5>Entreprise</h5><ul><li><a href="index.html#about">À propos</a></li><li><a href="index.html#gallery">Galerie</a></li><li><a href="index.html#values">Engagements</a></li></ul></div>
+      <div class="ft-col"><h5>Contact</h5><p><a href="mailto:contact@aogold.com">contact@aogold.com</a></p><p><a href="tel:+22600000000">+226 XX XX XX XX</a></p><p>Ouagadougou, Burkina Faso</p></div>
+    </div>
+    <div class="ft-bottom">
+      <div>© <span id="yr">2026</span> ALPHA ET OMEGA GOLD</div>
+      <div class="ft-legal"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div>
+      <div class="ft-social">
+        <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 110-4.1 2.1 2.1 0 010 4.1zM7.1 20.5H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5c0 1 .8 1.7 1.8 1.7h20.5c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+</body>
+</html>
