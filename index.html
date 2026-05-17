@@ -13,6 +13,54 @@
 :root{--bg:#faf8f3;--bg2:#f3f0e8;--sf:#fff;--dark:#12110e;--dark2:#1c1a15;--gold:#9e7c2e;--gold-l:#b8932f;--gold-d:#7a6020;--w:#1c1a15;--g:#5b5349;--gd:#7a7468;--b:rgba(158,124,46,.12);--bh:rgba(158,124,46,.25);--sh:0 4px 28px rgba(0,0,0,.07);--se:'Cormorant Garamond',Georgia,serif;--di:'Italiana',Georgia,serif;--bo:'Manrope',system-ui,sans-serif}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{background:var(--bg);color:var(--w);font-family:var(--bo);font-weight:350;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}img{max-width:100%;height:auto;display:block}::selection{background:var(--gold);color:#fff}a{color:inherit;text-underline-offset:3px}:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
 
+/* ═══════════════════════════════════════════
+   ANIMATIONS KEYFRAMES
+   ═══════════════════════════════════════════ */
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse-gold{0%,100%{box-shadow:0 0 0 0 rgba(158,124,46,.4)}50%{box-shadow:0 0 0 12px rgba(158,124,46,0)}}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes borderGlow{0%,100%{border-color:var(--gold)}50%{border-color:var(--gold-l)}}
+@keyframes progressShine{0%{background-position:-200px 0}100%{background-position:calc(200px + 100vw) 0}}
+@keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-5%)}20%{transform:translate(-10%,5%)}30%{transform:translate(5%,-10%)}40%{transform:translate(-5%,15%)}50%{transform:translate(-10%,5%)}60%{transform:translate(15%,0)}70%{transform:translate(0,10%)}80%{transform:translate(-15%,0)}90%{transform:translate(10%,5%)}}
+
+/* Shimmer effect on gold text */
+.shimmer-text, .sec-title em, .hero h1 em, .cta-inner h2 em, .contact-left h2 em, .val h3 em, .feat-n, .pillar-n{
+  background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 30%,#d4b55a 50%,var(--gold-l) 70%,var(--gold) 100%);
+  background-size:200% 100%;-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;animation:shimmer 4s ease-in-out infinite;
+}
+/* Keep em styled via color fallback for non-webkit */
+@supports not (-webkit-background-clip:text){
+  .shimmer-text,.sec-title em,.hero h1 em,.cta-inner h2 em,.contact-left h2 em,.val h3 em,.feat-n,.pillar-n{
+    background:none;-webkit-text-fill-color:var(--gold);color:var(--gold);
+  }
+}
+
+/* Scroll progress bar */
+.scroll-progress{position:fixed;top:0;left:0;height:2.5px;background:linear-gradient(90deg,var(--gold-d),var(--gold-l),var(--gold));z-index:200;width:0;transition:width .1s linear;box-shadow:0 0 8px rgba(184,157,90,.4)}
+
+/* Nav link underline animation */
+.nav-links a{position:relative}.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .35s cubic-bezier(.4,0,.2,1)}.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav .nav-links a::after{background:#fff}.nav.scrolled .nav-links a::after{background:var(--gold)}
+
+/* Staggered reveal children */
+.rv-stagger > *{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.rv-stagger.in > *:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0)}
+.rv-stagger.in > *:nth-child(2){transition-delay:.15s;opacity:1;transform:translateY(0)}
+.rv-stagger.in > *:nth-child(3){transition-delay:.25s;opacity:1;transform:translateY(0)}
+.rv-stagger.in > *:nth-child(4){transition-delay:.35s;opacity:1;transform:translateY(0)}
+.rv-stagger.in > *:nth-child(5){transition-delay:.45s;opacity:1;transform:translateY(0)}
+
+/* Hero parallax */
+.parallax-bg{will-change:transform}
+
+/* Gold price pulse flash */
+.price-flash{animation:pulse-gold .6s ease-out}
+
+/* Float animation for CTA button */
+.cta-inner .btn-fill{animation:float 3s ease-in-out infinite;animation-delay:1s}
+
 /* PRELOADER */
 .preloader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:grid;place-items:center;transition:opacity .6s,visibility .6s}.preloader.done{opacity:0;visibility:hidden}.preloader span{font-family:var(--di);font-size:1.6rem;color:var(--gold-l);letter-spacing:.4em}
 
@@ -139,6 +187,8 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
 </head>
 <body>
 
+<div class="scroll-progress"></div>
+
 <div class="preloader"><span>AOGOLD</span></div>
 
 <nav class="nav">
@@ -160,7 +210,7 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
 
 <!-- HERO — vraie photo de mine à ciel ouvert -->
 <section class="hero" id="hero">
-  <div class="hero-img" style="background-image:url('https://images.unsplash.com/photo-1570723265645-51df36ea6919?auto=format&fit=crop&w=1920&q=90')"></div>
+  <div class="hero-img parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1570723265645-51df36ea6919?auto=format&fit=crop&w=1920&q=90')"></div>
   <div class="hero-inner">
     <p class="hero-tag">Burkina Faso · Intermédiaire aurifère</p>
     <h1>L'<em>or</em> du terrain,<br>la rigueur du <em>marché</em>.</h1>
@@ -190,7 +240,7 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
         <p class="intro">Notre nom porte une promesse : accompagner l'or de sa source jusqu'à sa destination, sans rupture de confiance.</p>
         <p>ALPHA ET OMEGA GOLD opère au cœur du secteur minier burkinabè. Nous intervenons à chaque étape : prospection, extraction, traitement, et mise en relation entre producteurs — orpailleurs artisanaux comme sociétés industrielles — et acquéreurs internationaux.</p>
         <p>Notre mission est de sécuriser l'intermédiation. Authenticité de l'or, traçabilité des transactions, protection de chaque partie.</p>
-        <div class="about-pillars">
+        <div class="about-pillars rv-stagger">
           <div><div class="pillar-n">01</div><div class="pillar-t">Traçabilité</div><div class="pillar-d">Chaque lot documenté, de la mine à l'acheteur.</div></div>
           <div><div class="pillar-n">02</div><div class="pillar-t">Conformité</div><div class="pillar-d">Code minier burkinabè et standards LBMA.</div></div>
           <div><div class="pillar-n">03</div><div class="pillar-t">Discrétion</div><div class="pillar-d">Confidentialité absolue sur les volumes traités.</div></div>
@@ -207,10 +257,10 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
       <div class="rv"><div class="sec-label">Nos services</div><h2 class="sec-title">Trois <em>métiers</em>,<br>une seule <em>exigence</em>.</h2></div>
       <p class="sec-lead rv">De la roche à la transaction, nous maîtrisons chaque maillon. Chaque service apporte sécurité et valeur à nos partenaires.</p>
     </div>
-    <div class="services-grid">
+    <div class="services-grid rv-stagger">
 
       <!-- Travaux miniers — photo d'engins -->
-      <article class="svc rv">
+      <article class="svc">
         <div class="svc-img">
           <span class="svc-num">01 · Travaux</span>
           <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&h=500&q=90" alt="Excavatrice sur site minier" loading="lazy">
@@ -228,7 +278,7 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
       </article>
 
       <!-- Recherche & Exploitation — photo géologique -->
-      <article class="svc rv">
+      <article class="svc">
         <div class="svc-img">
           <span class="svc-num">02 · Recherche</span>
           <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=800&h=500&q=90" alt="Terrain géologique — exploration aurifère" loading="lazy">
@@ -246,7 +296,7 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
       </article>
 
       <!-- Achat d'or — photo lingots -->
-      <article class="svc rv">
+      <article class="svc">
         <div class="svc-img">
           <span class="svc-num">03 · Achat d'or</span>
           <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=800&h=500&q=90" alt="Lingots d'or — achat et certification" loading="lazy">
@@ -271,11 +321,11 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
 <section class="process" id="process">
   <div class="wrap">
     <div class="process-head rv"><div class="sec-label center">Processus</div><h2 class="sec-title">Quatre <em>étapes</em>, zéro improvisation.</h2></div>
-    <div class="steps">
-      <div class="step rv"><div class="step-n">I</div><h4>Sourcing</h4><p>Identification auprès d'orpailleurs, coopératives et sites déclarés.</p></div>
-      <div class="step rv"><div class="step-n">II</div><h4>Expertise</h4><p>Analyse du titre, pesée certifiée, documentation du lot.</p></div>
-      <div class="step rv"><div class="step-n">III</div><h4>Intermédiation</h4><p>Mise en relation acheteur/vendeur, négociation transparente.</p></div>
-      <div class="step rv"><div class="step-n">IV</div><h4>Livraison</h4><p>Sécurisation du paiement, transport agréé, remise officielle.</p></div>
+    <div class="steps rv-stagger">
+      <div class="step"><div class="step-n">I</div><h4>Sourcing</h4><p>Identification auprès d'orpailleurs, coopératives et sites déclarés.</p></div>
+      <div class="step"><div class="step-n">II</div><h4>Expertise</h4><p>Analyse du titre, pesée certifiée, documentation du lot.</p></div>
+      <div class="step"><div class="step-n">III</div><h4>Intermédiation</h4><p>Mise en relation acheteur/vendeur, négociation transparente.</p></div>
+      <div class="step"><div class="step-n">IV</div><h4>Livraison</h4><p>Sécurisation du paiement, transport agréé, remise officielle.</p></div>
     </div>
   </div>
 </section>
@@ -287,12 +337,12 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
       <div class="rv"><div class="sec-label">Galerie</div><h2 class="sec-title">Sur le <em>terrain</em>.</h2></div>
       <p class="sec-lead rv">Mines, engins, or, orpaillage — un aperçu de notre quotidien au Burkina Faso.</p>
     </div>
-    <div class="gal-grid">
-      <div class="gal-item tall rv"><img src="https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=800&q=90" alt="Pépites d'or brut" loading="lazy"><div class="gal-cap"><small>Or</small><h4>Pépites brutes</h4></div></div>
-      <div class="gal-item wide rv"><img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?auto=format&fit=crop&w=1200&h=600&q=90" alt="Exploitation minière au Burkina Faso" loading="lazy"><div class="gal-cap"><small>Exploitation</small><h4>Site minier actif</h4></div></div>
-      <div class="gal-item rv"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=800&q=90" alt="Excavatrice sur chantier" loading="lazy"><div class="gal-cap"><small>Engins</small><h4>Machinerie lourde</h4></div></div>
-      <div class="gal-item rv"><img src="https://images.unsplash.com/photo-1624365168968-f283d506c6b6?auto=format&fit=crop&w=800&q=90" alt="Lingots d'or empilés" loading="lazy"><div class="gal-cap"><small>Achat</small><h4>Or certifié</h4></div></div>
-      <div class="gal-item wide rv"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&h=600&q=90" alt="Terrain minier rocheux — chantier" loading="lazy"><div class="gal-cap"><small>Travaux</small><h4>Chantier minier</h4></div></div>
+    <div class="gal-grid rv-stagger">
+      <div class="gal-item tall"><img src="https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=800&q=90" alt="Pépites d'or brut" loading="lazy"><div class="gal-cap"><small>Or</small><h4>Pépites brutes</h4></div></div>
+      <div class="gal-item wide"><img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?auto=format&fit=crop&w=1200&h=600&q=90" alt="Exploitation minière au Burkina Faso" loading="lazy"><div class="gal-cap"><small>Exploitation</small><h4>Site minier actif</h4></div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=800&q=90" alt="Excavatrice sur chantier" loading="lazy"><div class="gal-cap"><small>Engins</small><h4>Machinerie lourde</h4></div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1624365168968-f283d506c6b6?auto=format&fit=crop&w=800&q=90" alt="Lingots d'or empilés" loading="lazy"><div class="gal-cap"><small>Achat</small><h4>Or certifié</h4></div></div>
+      <div class="gal-item wide"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&h=600&q=90" alt="Terrain minier rocheux — chantier" loading="lazy"><div class="gal-cap"><small>Travaux</small><h4>Chantier minier</h4></div></div>
     </div>
   </div>
 </section>
@@ -360,11 +410,11 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
 <section class="values" id="values">
   <div class="wrap">
     <div class="values-head rv"><div class="sec-label center">Engagements</div><h2 class="sec-title">Exploitation <em>responsable</em>.</h2></div>
-    <div class="vals-grid">
-      <div class="val rv"><div class="val-n">01</div><h3>Conformité &amp; <em>légalité</em></h3><p>Code minier du Burkina Faso respecté. Opérations déclarées, taxées, documentées.</p></div>
-      <div class="val rv"><div class="val-n">02</div><h3>Communautés <em>locales</em></h3><p>Emploi local, revenus pour les villages partenaires, travail avec les orpailleurs artisanaux.</p></div>
-      <div class="val rv"><div class="val-n">03</div><h3>Respect de l'<em>environnement</em></h3><p>Réhabilitation des sites, gestion de l'eau, réduction des produits chimiques.</p></div>
-      <div class="val rv"><div class="val-n">04</div><h3>Traçabilité <em>totale</em></h3><p>Chaque lot tracé du site artisanal ou industriel jusqu'à l'acheteur final.</p></div>
+    <div class="vals-grid rv-stagger">
+      <div class="val"><div class="val-n">01</div><h3>Conformité &amp; <em>légalité</em></h3><p>Code minier du Burkina Faso respecté. Opérations déclarées, taxées, documentées.</p></div>
+      <div class="val"><div class="val-n">02</div><h3>Communautés <em>locales</em></h3><p>Emploi local, revenus pour les villages partenaires, travail avec les orpailleurs artisanaux.</p></div>
+      <div class="val"><div class="val-n">03</div><h3>Respect de l'<em>environnement</em></h3><p>Réhabilitation des sites, gestion de l'eau, réduction des produits chimiques.</p></div>
+      <div class="val"><div class="val-n">04</div><h3>Traçabilité <em>totale</em></h3><p>Chaque lot tracé du site artisanal ou industriel jusqu'à l'acheteur final.</p></div>
     </div>
   </div>
 </section>
@@ -555,6 +605,55 @@ if(form){
     .finally(function(){btn.disabled=false;btn.textContent=orig});
   });
 }
+
+// ═══════════════════════════
+// SCROLL PROGRESS BAR
+// ═══════════════════════════
+var progBar=document.querySelector('.scroll-progress');
+if(progBar){
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    var p=h>0?(window.scrollY/h)*100:0;
+    progBar.style.width=p+'%';
+  },{passive:true});
+}
+
+// ═══════════════════════════
+// HERO PARALLAX
+// ═══════════════════════════
+var paraBg=document.querySelector('.parallax-bg');
+if(paraBg){
+  window.addEventListener('scroll',function(){
+    var scrolled=window.scrollY;
+    if(scrolled<window.innerHeight){
+      paraBg.style.transform='translateY('+(scrolled*0.35)+'px)';
+    }
+  },{passive:true});
+}
+
+// ═══════════════════════════
+// STAGGERED REVEAL
+// ═══════════════════════════
+var stagObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('in');stagObs.unobserve(e.target)}
+  });
+},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv-stagger').forEach(function(el){stagObs.observe(el)});
+
+// ═══════════════════════════
+// GOLD PRICE PULSE ON UPDATE
+// ═══════════════════════════
+var pc=document.querySelector('.price-card');
+function pulsePrice(){
+  if(pc){pc.classList.add('price-flash');setTimeout(function(){pc.classList.remove('price-flash')},600)}
+}
+// Hook into existing gold price updater by wrapping it
+var origUpd=upd;
+upd=function(price){
+  origUpd(price);
+  pulsePrice();
+};
 
 })();
 
