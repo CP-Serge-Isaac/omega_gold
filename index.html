@@ -23,6 +23,13 @@
 @keyframes borderGlow{0%,100%{border-color:var(--gold)}50%{border-color:var(--gold-l)}}
 @keyframes progressShine{0%{background-position:-200px 0}100%{background-position:calc(200px + 100vw) 0}}
 @keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-5%)}20%{transform:translate(-10%,5%)}30%{transform:translate(5%,-10%)}40%{transform:translate(-5%,15%)}50%{transform:translate(-10%,5%)}60%{transform:translate(15%,0)}70%{transform:translate(0,10%)}80%{transform:translate(-15%,0)}90%{transform:translate(10%,5%)}}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
+@keyframes rotateLogo{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes fadeSlideRight{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeSlideLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes countPulse{0%{transform:scale(1)}50%{transform:scale(1.15);color:var(--gold-l)}100%{transform:scale(1)}}
+@keyframes connectorGrow{from{width:0}to{width:100%}}
 
 /* Shimmer effect on gold text */
 .shimmer-text, .sec-title em, .hero h1 em, .cta-inner h2 em, .contact-left h2 em, .val h3 em, .feat-n, .pillar-n{
@@ -60,6 +67,41 @@
 
 /* Float animation for CTA button */
 .cta-inner .btn-fill{animation:float 3s ease-in-out infinite;animation-delay:1s}
+
+/* Ripple effect on buttons */
+.btn-fill,.btn-line,.submit-btn,.nav-cta-btn{position:relative;overflow:hidden}
+.btn-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripple .6s linear;pointer-events:none}
+
+/* Logo hover rotation */
+.logo:hover .logo-icon{transform:rotate(360deg)}
+
+/* Counter glow */
+.counter-glow{animation:countPulse .5s ease-out}
+
+/* Image reveal directionnel */
+.rv-right{opacity:0;transform:translateX(-40px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}.rv-right.in{opacity:1;transform:translateX(0)}
+.rv-left{opacity:0;transform:translateX(40px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}.rv-left.in{opacity:1;transform:translateX(0)}
+.rv-scale{opacity:0;transform:scale(.9);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}.rv-scale.in{opacity:1;transform:scale(1)}
+
+/* Process connector lines */
+.steps{position:relative}.steps::before{content:'';position:absolute;top:42px;left:15%;right:15%;height:1px;background:var(--b);z-index:0}
+@media(min-width:1025px){.steps::after{content:'';position:absolute;top:42px;left:15%;height:1px;background:var(--gold);z-index:1;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}.steps.connected::after{width:70%}}
+.step{position:relative;z-index:1}.step-n{background:var(--bg2)}
+
+/* Float label on form inputs */
+.fg{position:relative}.fg .float-label{position:absolute;left:0;top:.7rem;font-size:.95rem;color:var(--gd);pointer-events:none;transition:all .25s ease;font-family:var(--bo)}.fg input:focus~.float-label,.fg textarea:focus~.float-label,.fg input:not(:placeholder-shown)~.float-label,.fg textarea:not(:placeholder-shown)~.float-label,.fg select:focus~.float-label{top:-.8rem;font-size:.62rem;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-weight:500}
+
+/* Footer link underline */
+.ft-col a{position:relative}.ft-col a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold-l);transition:width .3s ease}.ft-col a:hover::after{width:100%}
+
+/* Scroll-top enhanced */
+.scroll-top{transition:all .35s cubic-bezier(.4,0,.2,1),transform .3s}.scroll-top:hover{background:var(--gold-l);transform:translateY(-4px) scale(1.05);box-shadow:0 6px 20px rgba(158,124,46,.35)}
+
+/* Gallery item hover depth */
+.gal-item{transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s}.gal-item:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.15);z-index:5}
+
+/* Smooth price count transition */
+.pc-price,.pc-row .v{transition:color .3s}
 
 /* PRELOADER */
 .preloader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:grid;place-items:center;transition:opacity .6s,visibility .6s}.preloader.done{opacity:0;visibility:hidden}.preloader span{font-family:var(--di);font-size:1.6rem;color:var(--gold-l);letter-spacing:.4em}
@@ -231,10 +273,10 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
 <section class="about" id="about">
   <div class="wrap">
     <div class="about-grid">
-      <div class="about-photo rv">
+      <div class="about-photo rv-right">
         <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=800&q=90" alt="Terrain minier africain">
       </div>
-      <div class="about-text rv">
+      <div class="about-text rv-left">
         <div class="sec-label">À propos</div>
         <h2 class="sec-title">Du <em>commencement</em> à l'<em>aboutissement</em>.</h2>
         <p class="intro">Notre nom porte une promesse : accompagner l'or de sa source jusqu'à sa destination, sans rupture de confiance.</p>
@@ -380,7 +422,7 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
 <section id="market">
   <div class="wrap">
     <div class="market-grid">
-      <div class="market-text rv">
+      <div class="market-text rv-right">
         <div class="sec-label">Marché</div>
         <h2 class="sec-title">Cours de l'<em>or</em> en direct.</h2>
         <p>Le Burkina Faso est le 3ᵉ producteur d'or en Afrique. Cette ressource nécessite des intermédiaires qui parlent la langue des orpailleurs comme celle des comptoirs internationaux.</p>
@@ -390,7 +432,7 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
           <div class="feat"><span class="feat-n">III.</span><div><h4>Réseau vérifié</h4><p>Acheteurs internationaux conformes aux normes anti-blanchiment.</p></div></div>
         </div>
       </div>
-      <div class="rv">
+      <div class="rv-scale">
         <div class="price-card">
           <div class="pc-head"><span class="tag">Cours de l'or</span><span class="pc-live">En direct</span></div>
           <div class="pc-price" id="goldPrice">$4 710,00</div>
@@ -453,22 +495,20 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
       <form class="contact-form rv" id="contactForm" novalidate>
         <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
         <div class="form-row">
-          <div class="fg"><label for="name">Nom *</label><input type="text" id="name" name="name" required placeholder="Votre nom"></div>
-          <div class="fg"><label for="email">Email *</label><input type="email" id="email" name="email" required placeholder="vous@exemple.com"></div>
+          <div class="fg"><input type="text" id="name" name="name" required placeholder=" "><span class="float-label">Nom *</span></div>
+          <div class="fg"><input type="email" id="email" name="email" required placeholder=" "><span class="float-label">Email *</span></div>
         </div>
         <div class="form-row">
-          <div class="fg"><label for="phone">Téléphone</label><input type="tel" id="phone" name="phone" placeholder="+226..."></div>
-          <div class="fg"><label for="subject">Objet</label>
-            <select id="subject" name="subject">
-              <option value="achat">Achat d'or</option>
-              <option value="vente">Vente (orpailleur / exploitant)</option>
-              <option value="travaux">Travaux miniers</option>
-              <option value="recherche">Recherche &amp; exploitation</option>
-              <option value="autre">Autre</option>
-            </select>
-          </div>
+          <div class="fg"><input type="tel" id="phone" name="phone" placeholder=" "><span class="float-label">Téléphone</span></div>
+          <div class="fg"><select id="subject" name="subject"><option value="" disabled selected></option>
+            <option value="achat">Achat d'or</option>
+            <option value="vente">Vente (orpailleur / exploitant)</option>
+            <option value="travaux">Travaux miniers</option>
+            <option value="recherche">Recherche &amp; exploitation</option>
+            <option value="autre">Autre</option>
+          </select><span class="float-label">Objet</span></div>
         </div>
-        <div class="fg"><label for="message">Message *</label><textarea id="message" name="message" required placeholder="Décrivez votre projet..."></textarea></div>
+        <div class="fg"><textarea id="message" name="message" required placeholder=" "></textarea><span class="float-label">Message *</span></div>
         <button type="submit" class="submit-btn">Envoyer</button>
         <div class="form-msg" id="formMsg"></div>
         <p class="priv">Vos données sont utilisées uniquement pour vous répondre.</p>
@@ -531,12 +571,27 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
 
 // Reveal on scroll
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
+document.querySelectorAll('.rv, .rv-right, .rv-left, .rv-scale').forEach(function(el){obs.observe(el)});
+
+// ═══════════════════════════
+// RIPPLE EFFECT ON BUTTONS
+// ═══════════════════════════
+document.querySelectorAll('.btn-fill, .btn-line, .submit-btn, .nav-cta-btn').forEach(function(btn){
+  btn.addEventListener('click',function(e){
+    var ripple=document.createElement('span'),d=Math.max(btn.offsetWidth,btn.offsetHeight);
+    ripple.className='btn-ripple';
+    ripple.style.width=ripple.style.height=d+'px';
+    ripple.style.left=(e.clientX-btn.getBoundingClientRect().left-d/2)+'px';
+    ripple.style.top=(e.clientY-btn.getBoundingClientRect().top-d/2)+'px';
+    btn.appendChild(ripple);
+    ripple.addEventListener('animationend',function(){ripple.remove()});
+  });
+});
 
 // Counter animation
 function animCount(el){
   var target=parseFloat(el.dataset.count),suffix=el.dataset.suffix||'',steps=50,inc=target/steps,cur=0;
-  var timer=setInterval(function(){cur+=inc;if(cur>=target){cur=target;clearInterval(timer)}el.textContent=Math.floor(cur)+suffix},30);
+  var timer=setInterval(function(){cur+=inc;if(cur>=target){cur=target;clearInterval(timer);el.classList.add('counter-glow');setTimeout(function(){el.classList.remove('counter-glow')},500)}el.textContent=Math.floor(cur)+suffix},30);
 }
 var cobs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){animCount(e.target);cobs.unobserve(e.target)}})},{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(function(el){cobs.observe(el)});
@@ -556,22 +611,31 @@ window.addEventListener('scroll',function(){
 var st=document.querySelector('.scroll-top');
 if(st) st.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
 
-// Gold price — REAL API
+// Gold price — REAL API with smooth count
 var gp=document.getElementById('goldPrice');
 if(gp){
   var OZ=31.1035;
   function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,' ').replace('.',',')}
+  function smoothCount(el,targetVal,fmtFn,dur){
+    var start=parseFloat(el.textContent.replace(/[^0-9.]/g,''))||targetVal*.98,startTime=performance.now();
+    function tick(now){
+      var p=Math.min((now-startTime)/dur,1),eased=1-Math.pow(1-p,3),val=start+(targetVal-start)*eased;
+      el.textContent=fmtFn(val);
+      if(p<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
   function upd(price){
     var g24=price/OZ,g22=g24*22/24,g18=g24*18/24;
-    gp.textContent=fmt(price);
+    smoothCount(gp,price,fmt,800);
     var e24=document.getElementById('p24'),e22=document.getElementById('p22'),e18=document.getElementById('p18'),eCfa=document.getElementById('pCFA'),eTime=document.getElementById('pTime');
-    if(e24)e24.textContent=fmt(g24);if(e22)e22.textContent=fmt(g22);if(e18)e18.textContent=fmt(g18);
-    if(eCfa)eCfa.textContent=Math.round(g24*608).toLocaleString('fr-FR')+' FCFA';
+    if(e24)smoothCount(e24,g24,fmt,600);if(e22)smoothCount(e22,g22,fmt,600);if(e18)smoothCount(e18,g18,fmt,600);
+    if(eCfa){var cfaVal=Math.round(g24*608);eCfa.textContent=cfaVal.toLocaleString('fr-FR')+' FCFA'}
     if(eTime)eTime.textContent='Mis à jour : '+new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
   }
   upd(4710);
   function fetchGold(){
-    fetch('https://api.gold-api.com/price/XAU').then(function(r){return r.json()}).then(function(d){if(d&&d.price)upd(d.price)}).catch(function(){});
+    fetch('https://api.gold-api.com/price/XAU').then(function(r){return r.json()}).then(function(d){if(d&&d.price){upd(d.price);pulsePrice()}}).catch(function(){});
   }
   fetchGold();setInterval(fetchGold,300000);
 }
@@ -648,12 +712,17 @@ var pc=document.querySelector('.price-card');
 function pulsePrice(){
   if(pc){pc.classList.add('price-flash');setTimeout(function(){pc.classList.remove('price-flash')},600)}
 }
-// Hook into existing gold price updater by wrapping it
-var origUpd=upd;
-upd=function(price){
-  origUpd(price);
-  pulsePrice();
-};
+
+// ═══════════════════════════
+// PROCESS CONNECTOR ANIMATION
+// ═══════════════════════════
+var stepsEl=document.querySelector('.steps');
+if(stepsEl){
+  var stepsObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('connected');stepsObs.unobserve(e.target)}});
+  },{threshold:.3});
+  stepsObs.observe(stepsEl);
+}
 
 })();
 
