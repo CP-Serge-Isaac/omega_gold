@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://omegagold.vercel.app/sitemap.xml
