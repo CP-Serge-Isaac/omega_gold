@@ -56,7 +56,8 @@
   ]
 }
 </script>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23b89d5a'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='18' fill='%230a0a0a'%3Eα%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Italiana&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -123,7 +124,7 @@
 .btn-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripple .6s linear;pointer-events:none}
 
 /* Logo hover rotation */
-.logo:hover .logo-icon{transform:rotate(360deg)}
+.logo:hover .logo-mark{transform:rotate(360deg)}
 
 /* Counter glow */
 .counter-glow{animation:countPulse .5s ease-out}
@@ -185,7 +186,7 @@
 /* NAV — transparent sur hero, blanc une fois scrollé */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4%;background:transparent;transition:background .4s,padding .3s,box-shadow .4s}
 .nav.scrolled{background:rgba(250,248,243,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:1rem 4%;box-shadow:0 1px 12px rgba(0,0,0,.06)}
-.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}.logo-icon{width:36px;height:36px;border:1px solid;border-radius:50%;display:grid;place-items:center;font-family:var(--se);font-size:.85rem;font-style:italic;transition:all .3s}.logo-name{font-family:var(--di);font-size:.95rem;letter-spacing:.25em;transition:color .3s}
+.logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;flex-shrink:0}.logo-mark{height:44px;width:auto;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 1px 2px rgba(0,0,0,.18))}.nav.scrolled .logo-mark{height:38px}.logo-name{font-family:var(--di);font-size:.95rem;letter-spacing:.25em;transition:color .3s;white-space:nowrap}
 /* Sur le hero : texte blanc */
 .nav .logo-icon{border-color:rgba(255,255,255,.5);color:#fff}.nav .logo-name{color:#fff}
 .nav.scrolled .logo-icon{border-color:var(--gold);color:var(--gold)}.nav.scrolled .logo-name{color:var(--gold)}
@@ -310,7 +311,7 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
 <div class="preloader"><span>AOGOLD</span></div>
 
 <nav class="nav">
-  <a href="#" class="logo"><span class="logo-icon">αΩ</span><span class="logo-name">ALPHA &amp; OMEGA</span></a>
+  <a href="#" class="logo"><img class="logo-mark" src="assets/logo-mark.png" alt="Alpha & Oméga Gold"><span class="logo-name">ALPHA &amp; OMEGA</span></a>
   <ul class="nav-links">
     <li><a href="#about">À propos</a></li>
     <li><a href="#services">Services</a></li>
@@ -599,7 +600,7 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
 <footer>
   <div class="wrap">
     <div class="ft-grid">
-      <div class="ft-brand"><a href="#" class="logo"><span class="logo-icon">αΩ</span><span class="logo-name">ALPHA &amp; OMEGA</span></a><p>L'intermédiaire de confiance. Des orpailleurs aux comptoirs internationaux.</p></div>
+      <div class="ft-brand"><a href="#" class="logo"><img class="logo-mark" src="assets/logo-mark.png" alt="Alpha & Oméga Gold"><span class="logo-name">ALPHA &amp; OMEGA</span></a><p>L'intermédiaire de confiance. Des orpailleurs aux comptoirs internationaux.</p></div>
       <div class="ft-col"><h5>Services</h5><ul><li><a href="#services">Travaux miniers</a></li><li><a href="#services">Recherche</a></li><li><a href="#services">Achat d'or</a></li></ul></div>
       <div class="ft-col"><h5>Entreprise</h5><ul><li><a href="#about">À propos</a></li><li><a href="#gallery">Galerie</a></li><li><a href="#values">Engagements</a></li></ul></div>
       <div class="ft-col"><h5>Contact</h5><p><a href="mailto:contact@aogold.com">contact@aogold.com</a></p><p><a href="tel:+22600000000">+226 XX XX XX XX</a></p><p>Ouagadougou, Burkina Faso</p></div>
