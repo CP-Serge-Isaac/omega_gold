@@ -57,6 +57,20 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Comment vendre mon or à Alpha et Oméga Gold ?", "acceptedAnswer": {"@type": "Answer", "text": "Contactez-nous par téléphone, WhatsApp ou via le formulaire. Nous convenons d'un rendez-vous pour la pesée, le titrage et l'évaluation de votre or. Une offre vous est proposée sur place, en toute transparence."}},
+    {"@type": "Question", "name": "Quels sont vos délais de paiement ?", "acceptedAnswer": {"@type": "Answer", "text": "Le règlement intervient dès l'accord sur le prix et la vérification du lot, selon des modalités sécurisées convenues ensemble avant la transaction."}},
+    {"@type": "Question", "name": "Comment le prix de mon or est-il fixé ?", "acceptedAnswer": {"@type": "Answer", "text": "Le prix est basé sur le cours international de l'or (once troy), ajusté selon le titre (de 18K à 24K) et le poids net constaté lors du titrage."}},
+    {"@type": "Question", "name": "Achetez-vous auprès des orpailleurs artisanaux ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Nous achetons auprès de toutes les sources légitimes : orpailleurs artisanaux, coopératives et exploitations industrielles."}},
+    {"@type": "Question", "name": "Comment garantissez-vous la traçabilité et la conformité ?", "acceptedAnswer": {"@type": "Answer", "text": "Chaque lot est documenté de la source jusqu'à l'acheteur, dans le respect du code minier burkinabè et des standards internationaux (LBMA)."}},
+    {"@type": "Question", "name": "Proposez-vous aussi des travaux miniers ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui : excavation, terrassement, aménagement de sites, ainsi que la recherche et l'exploitation."}}
+  ]
+}
+</script>
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
@@ -277,6 +291,19 @@ section{padding:7rem 4%}.wrap{max-width:1320px;margin:0 auto}
 
 /* TESTIMONIAL */
 .testi{text-align:center;padding:6rem 4%;background:var(--bg2)}.testi blockquote{font-family:var(--se);font-style:italic;font-size:clamp(1.4rem,3vw,2.2rem);line-height:1.45;color:var(--w);max-width:780px;margin:0 auto 2rem;position:relative;padding:0 2rem}.testi blockquote::before{content:'\201C';position:absolute;left:0;top:1rem;font-size:4rem;color:var(--gold);line-height:0}.testi blockquote::after{content:'\201D';position:absolute;right:0;bottom:-.5rem;font-size:4rem;color:var(--gold);line-height:0}.testi-who{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:500}.testi-role{font-size:.8rem;color:var(--g);margin-top:.2rem}
+/* FAQ */
+#faq .wrap{max-width:840px}
+.faq-head{text-align:center;margin-bottom:2.5rem}
+.faq-list{border-top:1px solid var(--b)}
+.faq-item{border-bottom:1px solid var(--b)}
+.faq-q{cursor:pointer;list-style:none;padding:1.35rem .2rem;font-family:var(--se);font-size:clamp(1.15rem,2.2vw,1.35rem);font-weight:500;color:var(--w);display:flex;justify-content:space-between;align-items:center;gap:1.2rem;transition:color .3s}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:'+';font-family:var(--bo);font-size:1.5rem;font-weight:300;color:var(--gold);transition:transform .35s cubic-bezier(.4,0,.2,1);flex-shrink:0;line-height:1}
+.faq-item[open] .faq-q::after{transform:rotate(135deg)}
+.faq-q:hover{color:var(--gold)}
+.faq-a{padding:0 2rem 1.5rem 0;color:var(--g);animation:faqOpen .4s ease}
+.faq-a p{margin:0;line-height:1.75}
+@keyframes faqOpen{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 
 /* CTA — fond sombre */
 .cta-section{position:relative;padding:8rem 4%;text-align:center;overflow:hidden;background:var(--dark)}.cta-section .bg{position:absolute;inset:0;background:center/cover no-repeat;opacity:.15}.cta-section::after{content:'';position:absolute;inset:0;background:radial-gradient(120% 130% at 50% -10%,transparent 30%,var(--dark) 78%);opacity:.55}.cta-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}.cta-inner h2{font-family:var(--se);font-size:clamp(2rem,5vw,3.8rem);font-weight:400;line-height:1.12;margin-bottom:1.2rem;color:#fff}.cta-inner h2 em{font-style:italic;color:var(--gold-l)}.cta-inner p{color:rgba(255,255,255,.65);font-size:1.1rem;margin-bottom:2.5rem;line-height:1.8}
@@ -561,6 +588,21 @@ footer .logo{align-self:flex-start}footer .logo-full{height:82px;filter:none}
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="faq-head rv"><div class="sec-label center">FAQ</div><h2 class="sec-title">Questions <em>fréquentes</em>.</h2></div>
+    <div class="faq-list rv">
+      <details class="faq-item"><summary class="faq-q">Comment vendre mon or à Alpha et Oméga Gold ?</summary><div class="faq-a"><p>Contactez-nous par téléphone, WhatsApp ou via le formulaire. Nous convenons d'un rendez-vous pour la pesée, le titrage et l'évaluation de votre or. Une offre vous est proposée sur place, en toute transparence.</p></div></details>
+      <details class="faq-item"><summary class="faq-q">Quels sont vos délais de paiement ?</summary><div class="faq-a"><p>Le règlement intervient dès l'accord sur le prix et la vérification du lot, selon des modalités sécurisées convenues ensemble avant la transaction.</p></div></details>
+      <details class="faq-item"><summary class="faq-q">Comment le prix de mon or est-il fixé ?</summary><div class="faq-a"><p>Le prix est basé sur le cours international de l'or (once troy), ajusté selon le titre (de 18K à 24K) et le poids net constaté lors du titrage. Le calcul vous est expliqué en toute clarté.</p></div></details>
+      <details class="faq-item"><summary class="faq-q">Achetez-vous auprès des orpailleurs artisanaux ?</summary><div class="faq-a"><p>Oui. Nous achetons auprès de toutes les sources légitimes : orpailleurs artisanaux, coopératives et exploitations industrielles.</p></div></details>
+      <details class="faq-item"><summary class="faq-q">Comment garantissez-vous la traçabilité et la conformité ?</summary><div class="faq-a"><p>Chaque lot est documenté de la source jusqu'à l'acheteur, dans le respect du code minier burkinabè et des standards internationaux (LBMA).</p></div></details>
+      <details class="faq-item"><summary class="faq-q">Proposez-vous aussi des travaux miniers ?</summary><div class="faq-a"><p>Oui : excavation, terrassement, aménagement de sites, ainsi que la recherche et l'exploitation. Décrivez-nous votre projet et nous étudions la faisabilité.</p></div></details>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section">
   <div class="bg" style="background:radial-gradient(120% 130% at 50% -10%, #caa03a 0%, #96700f 32%, #141c18 72%);opacity:1"></div>
@@ -706,6 +748,20 @@ var T_EN={
 "Communautés locales":"Local <em>communities</em>","Emploi local, revenus pour les villages partenaires, travail avec les orpailleurs artisanaux.":"Local jobs, income for partner villages, work with artisanal gold panners.",
 "Respect de l'environnement":"Respect for the <em>environment</em>","Réhabilitation des sites, gestion de l'eau, réduction des produits chimiques.":"Site rehabilitation, water management, reduced use of chemicals.",
 "Traçabilité totale":"Total <em>traceability</em>","Chaque lot tracé du site artisanal ou industriel jusqu'à l'acheteur final.":"Every lot traced from the artisanal or industrial site to the final buyer.",
+// FAQ
+"FAQ":"FAQ","Questions fréquentes.":"Frequently asked <em>questions</em>.",
+"Comment vendre mon or à Alpha et Oméga Gold ?":"How do I sell my gold to Alpha & Oméga Gold?",
+"Contactez-nous par téléphone, WhatsApp ou via le formulaire. Nous convenons d'un rendez-vous pour la pesée, le titrage et l'évaluation de votre or. Une offre vous est proposée sur place, en toute transparence.":"Contact us by phone, WhatsApp or through the form. We arrange a meeting to weigh, assay and appraise your gold. An offer is made on the spot, in full transparency.",
+"Quels sont vos délais de paiement ?":"What are your payment terms?",
+"Le règlement intervient dès l'accord sur le prix et la vérification du lot, selon des modalités sécurisées convenues ensemble avant la transaction.":"Payment is made as soon as the price is agreed and the lot verified, under secure terms agreed together before the transaction.",
+"Comment le prix de mon or est-il fixé ?":"How is the price of my gold set?",
+"Le prix est basé sur le cours international de l'or (once troy), ajusté selon le titre (de 18K à 24K) et le poids net constaté lors du titrage. Le calcul vous est expliqué en toute clarté.":"The price is based on the international gold price (troy ounce), adjusted for purity (18K to 24K) and the net weight measured during assaying. The calculation is explained to you clearly.",
+"Achetez-vous auprès des orpailleurs artisanaux ?":"Do you buy from artisanal gold panners?",
+"Oui. Nous achetons auprès de toutes les sources légitimes : orpailleurs artisanaux, coopératives et exploitations industrielles.":"Yes. We buy from all legitimate sources: artisanal panners, cooperatives and industrial operations.",
+"Comment garantissez-vous la traçabilité et la conformité ?":"How do you ensure traceability and compliance?",
+"Chaque lot est documenté de la source jusqu'à l'acheteur, dans le respect du code minier burkinabè et des standards internationaux (LBMA).":"Every lot is documented from source to buyer, in compliance with the Burkina Faso mining code and international standards (LBMA).",
+"Proposez-vous aussi des travaux miniers ?":"Do you also offer mining works?",
+"Oui : excavation, terrassement, aménagement de sites, ainsi que la recherche et l'exploitation. Décrivez-nous votre projet et nous étudions la faisabilité.":"Yes: excavation, earthworks, site development, as well as exploration and operation. Tell us about your project and we assess its feasibility.",
 // Testimonial
 "Une équipe qui parle la langue du terrain — orpailleurs comme comptoirs internationaux — sans sacrifier la rigueur. Rare en Afrique de l'Ouest.":"A team that speaks the language of the field — gold panners and international trading houses alike — without sacrificing rigor. Rare in West Africa.",
 "— Acheteur international":"— International buyer","Partenaire depuis 2019":"Partner since 2019",
@@ -726,6 +782,7 @@ var T_EN={
 };
 var T_DYN={
 priceUpdated:{fr:"Mis à jour : ",en:"Updated: "},
+priceIndicative:{fr:"Cours indicatif",en:"Indicative price"},
 mapName:{fr:"Zones d'opération",en:"Operation zones"},
 mapHint:{fr:"Survolez un site",en:"Hover a site"},
 sending:{fr:"Envoi...",en:"Sending..."},
@@ -733,7 +790,7 @@ formOk:{fr:"Aperçu — en production ce message serait envoyé.",en:"Preview �
 formErr:{fr:"Erreur. Contactez-nous par téléphone.",en:"Error. Please contact us by phone."}
 };
 function norm(s){return s.replace(/\s+/g,' ').trim();}
-var SEL=".nav-links a,.nav-cta-btn,.mob-menu a,.hero-tag,.hero h1,.hero-desc,.hero-btns a,.hero-stat .lbl,.sec-label,.sec-title,.about-text p,.pillar-t,.pillar-d,.sec-lead,.svc-num,.svc-body h3,.svc-body p,.svc-list li,.step h4,.step p,.gal-cap small,.gal-cap h4,.map-tag span,.market-text>p,.feat h4,.feat p,.pc-head .tag,.pc-live,.pc-unit,.pc-row .k,.val h3,.val p,.testi blockquote,.testi-who,.testi-role,.cta-inner h2,.cta-inner p,.cta-inner a,.contact-left h2,.contact-left>p,.c-label,.float-label,#subject option,.submit-btn,.priv,.ft-brand p,.ft-col h5,.ft-col a,.ft-legal a";
+var SEL=".nav-links a,.nav-cta-btn,.mob-menu a,.hero-tag,.hero h1,.hero-desc,.hero-btns a,.hero-stat .lbl,.sec-label,.sec-title,.about-text p,.pillar-t,.pillar-d,.sec-lead,.svc-num,.svc-body h3,.svc-body p,.svc-list li,.step h4,.step p,.gal-cap small,.gal-cap h4,.map-tag span,.market-text>p,.feat h4,.feat p,.pc-head .tag,.pc-live,.pc-unit,.pc-row .k,.val h3,.val p,.faq-q,.faq-a p,.testi blockquote,.testi-who,.testi-role,.cta-inner h2,.cta-inner p,.cta-inner a,.contact-left h2,.contact-left>p,.c-label,.float-label,#subject option,.submit-btn,.priv,.ft-brand p,.ft-col h5,.ft-col a,.ft-legal a";
 var ELS=[].slice.call(document.querySelectorAll(SEL));
 ELS.forEach(function(el){el.__fr=el.innerHTML;el.__key=norm(el.textContent);});
 function applyStatic(lang){
@@ -835,7 +892,7 @@ if(st) st.addEventListener('click',function(){window.scrollTo({top:0,behavior:'s
 // Gold price — REAL API with smooth count
 var gp=document.getElementById('goldPrice');
 if(gp){
-  var OZ=31.1035,lastPrice=4710;
+  var OZ=31.1035,lastPrice=4710,live=false;
   function fmt(n){return '$'+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,' ').replace('.',',')}
   function smoothCount(el,targetVal,fmtFn,dur){
     var start=parseFloat(el.textContent.replace(/[^0-9.]/g,''))||targetVal*.98,startTime=performance.now();
@@ -853,12 +910,12 @@ if(gp){
     var e24=document.getElementById('p24'),e22=document.getElementById('p22'),e18=document.getElementById('p18'),eCfa=document.getElementById('pCFA'),eTime=document.getElementById('pTime');
     if(e24)smoothCount(e24,g24,fmt,600);if(e22)smoothCount(e22,g22,fmt,600);if(e18)smoothCount(e18,g18,fmt,600);
     if(eCfa){var cfaVal=Math.round(g24*608);eCfa.textContent=cfaVal.toLocaleString('fr-FR')+' FCFA'}
-    if(eTime)eTime.textContent=window.aogTr('priceUpdated')+new Date().toLocaleTimeString(window.AOG_LANG==='en'?'en-GB':'fr-FR',{hour:'2-digit',minute:'2-digit'});
+    if(eTime)eTime.textContent=live?(window.aogTr('priceUpdated')+new Date().toLocaleTimeString(window.AOG_LANG==='en'?'en-GB':'fr-FR',{hour:'2-digit',minute:'2-digit'})):window.aogTr('priceIndicative');
   }
   upd(4710);
   window.__i18nHooks.push(function(){upd(lastPrice);});
   function fetchGold(){
-    fetch('https://api.gold-api.com/price/XAU').then(function(r){return r.json()}).then(function(d){if(d&&d.price){upd(d.price);pulsePrice()}}).catch(function(){});
+    fetch('https://api.gold-api.com/price/XAU').then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){if(d&&d.price){live=true;upd(d.price);pulsePrice()}}).catch(function(){});
   }
   fetchGold();setInterval(fetchGold,300000);
 }
