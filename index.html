@@ -125,7 +125,7 @@
 .btn-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripple .6s linear;pointer-events:none}
 
 /* Logo hover rotation */
-.logo:hover .logo-mark{transform:rotate(360deg)}
+.logo:hover .logo-full{transform:scale(1.05)}
 
 /* Counter glow */
 .counter-glow{animation:countPulse .5s ease-out}
@@ -187,7 +187,7 @@
 /* NAV — transparent sur hero, blanc une fois scrollé */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4%;background:transparent;transition:background .4s,padding .3s,box-shadow .4s}
 .nav.scrolled{background:rgba(250,248,243,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:1rem 4%;box-shadow:0 1px 12px rgba(0,0,0,.06)}
-.logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;flex-shrink:0}.logo-mark{height:44px;width:auto;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 1px 2px rgba(0,0,0,.18))}.nav.scrolled .logo-mark{height:38px}.logo-name{font-family:var(--di);font-size:.95rem;letter-spacing:.25em;transition:color .3s;white-space:nowrap}
+.logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0}.logo-full{height:50px;width:auto;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}.nav.scrolled .logo-full{height:44px;filter:none}.logo-on-light{display:none}.nav.scrolled .logo-on-dark{display:none}.nav.scrolled .logo-on-light{display:block}
 /* Sur le hero : texte blanc */
 .nav .logo-icon{border-color:rgba(255,255,255,.5);color:#fff}.nav .logo-name{color:#fff}
 .nav.scrolled .logo-icon{border-color:var(--gold);color:var(--gold)}.nav.scrolled .logo-name{color:var(--gold)}
@@ -287,7 +287,7 @@ section{padding:7rem 4%}.wrap{max-width:1320px;margin:0 auto}
 
 /* FOOTER — sombre */
 footer{background:var(--dark);padding:4rem 4% 1.5rem;color:rgba(255,255,255,.55)}.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.1)}
-footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer .logo-name{color:var(--gold-l)}
+footer .logo{align-self:flex-start}footer .logo-full{height:82px;filter:none}
 .ft-brand p{color:rgba(255,255,255,.4);font-size:.88rem;line-height:1.7;margin-top:1rem;max-width:320px}.ft-col h5{font-family:var(--di);font-size:.74rem;letter-spacing:.25em;color:var(--gold-l);text-transform:uppercase;margin-bottom:1.2rem}.ft-col ul{list-style:none}.ft-col li{margin-bottom:.6rem}.ft-col a{color:rgba(255,255,255,.48);text-decoration:none;font-size:.88rem;transition:color .3s}.ft-col a:hover{color:var(--gold-l)}.ft-col p{color:rgba(255,255,255,.42);font-size:.88rem;line-height:1.6;margin-bottom:.3rem}
 .ft-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.78rem;color:rgba(255,255,255,.3)}.ft-legal{display:flex;gap:1.2rem}.ft-legal a{color:rgba(255,255,255,.35);text-decoration:none}.ft-legal a:hover{color:var(--gold-l)}
 .ft-credits{margin-top:1.2rem;font-size:.66rem;line-height:1.7;color:rgba(255,255,255,.25);letter-spacing:.02em}.ft-credits a{color:rgba(255,255,255,.4);text-decoration:underline;text-underline-offset:2px}.ft-credits a:hover{color:var(--gold-l)}.ft-social{display:flex;gap:.5rem}.ft-social a{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);border-radius:50%;color:rgba(255,255,255,.4);text-decoration:none;transition:all .3s}.ft-social a:hover{border-color:var(--gold-l);color:var(--gold-l)}
@@ -313,7 +313,7 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
 <div class="preloader"><span>AOGOLD</span></div>
 
 <nav class="nav">
-  <a href="#" class="logo"><img class="logo-mark" src="assets/logo-mark.png" alt="Alpha & Oméga Gold"><span class="logo-name">ALPHA &amp; OMEGA</span></a>
+  <a href="#" class="logo"><img class="logo-full logo-on-dark" src="assets/logo-light.png" alt="Alpha & Oméga Gold"><img class="logo-full logo-on-light" src="assets/logo.png" alt=""></a>
   <ul class="nav-links">
     <li><a href="#about">À propos</a></li>
     <li><a href="#services">Services</a></li>
@@ -602,7 +602,7 @@ footer .logo-icon{border-color:rgba(255,255,255,.35);color:var(--gold-l)}footer 
 <footer>
   <div class="wrap">
     <div class="ft-grid">
-      <div class="ft-brand"><a href="#" class="logo"><img class="logo-mark" src="assets/logo-mark.png" alt="Alpha & Oméga Gold"><span class="logo-name">ALPHA &amp; OMEGA</span></a><p>L'intermédiaire de confiance. Des orpailleurs aux comptoirs internationaux.</p></div>
+      <div class="ft-brand"><a href="#" class="logo"><img class="logo-full" src="assets/logo-light.png" alt="Alpha & Oméga Gold"></a><p>L'intermédiaire de confiance. Des orpailleurs aux comptoirs internationaux.</p></div>
       <div class="ft-col"><h5>Services</h5><ul><li><a href="#services">Travaux miniers</a></li><li><a href="#services">Recherche</a></li><li><a href="#services">Achat d'or</a></li></ul></div>
       <div class="ft-col"><h5>Entreprise</h5><ul><li><a href="#about">À propos</a></li><li><a href="#gallery">Galerie</a></li><li><a href="#values">Engagements</a></li></ul></div>
       <div class="ft-col"><h5>Contact</h5><p><a href="mailto:alphaeomegagold@gmail.com">alphaeomegagold@gmail.com</a></p><p><a href="tel:+22668000050">+226 68 00 00 50 / 65 00 00 50</a></p><p>06 BP 9309 Ouagadougou 06, Burkina Faso</p></div>
