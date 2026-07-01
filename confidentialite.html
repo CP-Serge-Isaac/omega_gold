@@ -16,13 +16,17 @@
 <style>
 :root{--bg:#faf8f3;--dark:#141c18;--gold:#96700f;--gold-l:#caa03a;--w:#15120e;--g:#423b33;--gd:#5e564c;--b:rgba(150,112,15,.16);--se:'Cormorant Garamond',Georgia,serif;--di:'Italiana',Georgia,serif;--bo:'Manrope',system-ui,sans-serif}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--w);font-family:var(--bo);font-weight:400;line-height:1.75;-webkit-font-smoothing:antialiased}
 a{color:var(--gold);text-underline-offset:3px}a:hover{color:var(--gold-l)}
 img{max-width:100%;display:block}
-.topbar{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:1rem 6%;position:sticky;top:0;z-index:10}
+.topbar{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:1rem 6%;position:sticky;top:0;z-index:10;gap:1rem;flex-wrap:wrap}
 .topbar .logo img{height:46px;width:auto;display:block}
+.tb-right{display:flex;align-items:center;gap:1.2rem}
 .topbar .home{color:rgba(255,255,255,.8);text-decoration:none;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase}
 .topbar .home:hover{color:var(--gold-l)}
+.lang-switch{border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-family:var(--bo);font-size:.7rem;letter-spacing:.12em;font-weight:500;padding:.35rem .7rem;border-radius:20px;cursor:pointer;text-transform:uppercase;transition:all .3s}
+.lang-switch:hover{background:var(--gold);border-color:var(--gold)}
 .head{padding:4.5rem 6% 2.5rem;max-width:900px;margin:0 auto}
 .eyebrow{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1rem}
 h1{font-family:var(--se);font-weight:400;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;margin-bottom:.6rem}
@@ -35,7 +39,6 @@ p{margin-bottom:.9rem;color:var(--g)}
 ul{margin:.4rem 0 .9rem 1.2rem;color:var(--g)}li{margin-bottom:.4rem}
 strong{color:var(--w);font-weight:500}
 .dl{list-style:none;margin:0}.dl li{margin-bottom:.5rem}.dl b{color:var(--w);font-weight:500;display:inline-block;min-width:180px}
-.note{background:rgba(150,112,15,.06);border-left:3px solid var(--gold);padding:1rem 1.2rem;font-size:.9rem;color:var(--gd);border-radius:0 4px 4px 0;margin-top:1rem}
 footer{background:var(--dark);color:rgba(255,255,255,.55);padding:2.5rem 6%;text-align:center;font-size:.82rem}
 footer a{color:rgba(255,255,255,.7);text-decoration:none;margin:0 .6rem}footer a:hover{color:var(--gold-l)}
 footer .cop{margin-top:1rem;font-size:.72rem;color:rgba(255,255,255,.35)}
@@ -45,83 +48,157 @@ footer .cop{margin-top:1rem;font-size:.72rem;color:rgba(255,255,255,.35)}
 <body>
 <div class="topbar">
   <a href="/" class="logo" aria-label="Accueil"><img src="assets/logo-light.png" alt="Alpha & Oméga Gold"></a>
-  <a href="/" class="home">← Retour à l'accueil</a>
+  <div class="tb-right">
+    <a href="/" class="home" data-fr="← Retour à l'accueil" data-en="← Back to home">← Retour à l'accueil</a>
+    <button class="lang-switch" id="langBtn" aria-label="Changer de langue">EN</button>
+  </div>
 </div>
 
-<div class="head">
-  <div class="eyebrow">Protection des données</div>
-  <h1>Politique de confidentialité</h1>
-  <div class="updated">Dernière mise à jour : 1<sup>er</sup> juillet 2026</div>
+<!-- FRANÇAIS -->
+<div data-lang="fr">
+  <div class="head">
+    <div class="eyebrow">Protection des données</div>
+    <h1>Politique de confidentialité</h1>
+    <div class="updated">Dernière mise à jour : 1<sup>er</sup> juillet 2026</div>
+  </div>
+  <main>
+    <section>
+      <p>Alpha et Oméga Gold accorde une grande importance à la protection de vos données à caractère personnel. La présente politique est établie conformément à la <strong>loi n°010-2004/AN du 20 avril 2004 portant protection des données à caractère personnel</strong> au Burkina Faso et à la réglementation de la <strong>Commission de l'Informatique et des Libertés (CIL)</strong>.</p>
+    </section>
+    <section>
+      <h2><span class="n">01</span>Responsable du traitement</h2>
+      <p>Le responsable du traitement des données est <strong>Alpha et Oméga Gold</strong>, sise 06 BP 9309 Ouagadougou 06, Burkina Faso — <a href="mailto:alphaeomegagold@gmail.com">alphaeomegagold@gmail.com</a>, tél. +226 68 00 00 50 / 65 00 00 50.</p>
+    </section>
+    <section>
+      <h2><span class="n">02</span>Données collectées</h2>
+      <p>Nous collectons uniquement les données que vous nous transmettez volontairement via le formulaire de contact :</p>
+      <ul>
+        <li>Nom ;</li>
+        <li>Adresse électronique ;</li>
+        <li>Numéro de téléphone (facultatif) ;</li>
+        <li>Objet et contenu de votre message.</li>
+      </ul>
+      <p>Aucune donnée sensible n'est demandée. Le site ne procède à aucun profilage ni à aucune collecte automatisée à des fins publicitaires.</p>
+    </section>
+    <section>
+      <h2><span class="n">03</span>Finalités et base légale</h2>
+      <p>Les données sont traitées dans le seul but de <strong>répondre à vos demandes de renseignements, de devis ou de partenariat</strong>. La base légale du traitement est votre <strong>consentement</strong>, matérialisé par l'envoi volontaire du formulaire.</p>
+    </section>
+    <section>
+      <h2><span class="n">04</span>Destinataires</h2>
+      <p>Vos données sont destinées exclusivement au personnel habilité d'Alpha et Oméga Gold chargé du traitement de votre demande. Elles ne sont <strong>ni vendues, ni louées, ni cédées</strong> à des tiers à des fins commerciales.</p>
+    </section>
+    <section>
+      <h2><span class="n">05</span>Durée de conservation</h2>
+      <p>Les données sont conservées le temps nécessaire au traitement de votre demande, puis archivées ou supprimées dans un délai maximal de trois (3) ans à compter du dernier contact, sauf obligation légale contraire.</p>
+    </section>
+    <section>
+      <h2><span class="n">06</span>Cookies et stockage local</h2>
+      <p>Le site n'utilise <strong>aucun cookie publicitaire ni traceur analytique</strong>. Seul un stockage local (<em>localStorage</em>) de votre navigateur conserve votre préférence de langue (français / anglais). Cette information reste sur votre appareil et n'est pas transmise à Alpha et Oméga Gold.</p>
+    </section>
+    <section>
+      <h2><span class="n">07</span>Hébergement et transferts</h2>
+      <p>Le site est hébergé par Vercel Inc. (États-Unis). Les messages envoyés via le formulaire sont transmis par courrier électronique. En nous contactant, vous acceptez ce mode de transmission.</p>
+    </section>
+    <section>
+      <h2><span class="n">08</span>Sécurité</h2>
+      <p>Nous mettons en œuvre des mesures techniques et organisationnelles raisonnables afin de protéger vos données contre tout accès, altération ou divulgation non autorisés.</p>
+    </section>
+    <section>
+      <h2><span class="n">09</span>Vos droits</h2>
+      <p>Conformément à la loi n°010-2004/AN, vous disposez d'un droit d'<strong>accès</strong>, de <strong>rectification</strong>, d'<strong>opposition</strong> et de <strong>suppression</strong> de vos données. Pour exercer ces droits, écrivez-nous à <a href="mailto:alphaeomegagold@gmail.com">alphaeomegagold@gmail.com</a> en précisant votre demande.</p>
+      <p>Vous pouvez également introduire une réclamation auprès de la <strong>Commission de l'Informatique et des Libertés (CIL)</strong> du Burkina Faso.</p>
+    </section>
+    <section>
+      <h2><span class="n">10</span>Modifications</h2>
+      <p>La présente politique peut être mise à jour à tout moment. La date de dernière mise à jour figure en tête de page.</p>
+    </section>
+  </main>
 </div>
 
-<main>
-  <section>
-    <p>Alpha et Oméga Gold accorde une grande importance à la protection de vos données à caractère personnel. La présente politique est établie conformément à la <strong>loi n°010-2004/AN du 20 avril 2004 portant protection des données à caractère personnel</strong> au Burkina Faso et à la réglementation de la <strong>Commission de l'Informatique et des Libertés (CIL)</strong>.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">01</span>Responsable du traitement</h2>
-    <p>Le responsable du traitement des données est <strong>Alpha et Oméga Gold</strong>, sise 06 BP 9309 Ouagadougou 06, Burkina Faso — <a href="mailto:alphaeomegagold@gmail.com">alphaeomegagold@gmail.com</a>, tél. +226 68 00 00 50 / 65 00 00 50.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">02</span>Données collectées</h2>
-    <p>Nous collectons uniquement les données que vous nous transmettez volontairement via le formulaire de contact :</p>
-    <ul>
-      <li>Nom ;</li>
-      <li>Adresse électronique ;</li>
-      <li>Numéro de téléphone (facultatif) ;</li>
-      <li>Objet et contenu de votre message.</li>
-    </ul>
-    <p>Aucune donnée sensible n'est demandée. Le site ne procède à aucun profilage ni à aucune collecte automatisée à des fins publicitaires.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">03</span>Finalités et base légale</h2>
-    <p>Les données sont traitées dans le seul but de <strong>répondre à vos demandes de renseignements, de devis ou de partenariat</strong>. La base légale du traitement est votre <strong>consentement</strong>, matérialisé par l'envoi volontaire du formulaire.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">04</span>Destinataires</h2>
-    <p>Vos données sont destinées exclusivement au personnel habilité d'Alpha et Oméga Gold chargé du traitement de votre demande. Elles ne sont <strong>ni vendues, ni louées, ni cédées</strong> à des tiers à des fins commerciales.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">05</span>Durée de conservation</h2>
-    <p>Les données sont conservées le temps nécessaire au traitement de votre demande, puis archivées ou supprimées dans un délai maximal de trois (3) ans à compter du dernier contact, sauf obligation légale contraire.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">06</span>Cookies et stockage local</h2>
-    <p>Le site n'utilise <strong>aucun cookie publicitaire ni traceur analytique</strong>. Seul un stockage local (<em>localStorage</em>) de votre navigateur conserve votre préférence de langue (français / anglais). Cette information reste sur votre appareil et n'est pas transmise à Alpha et Oméga Gold.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">07</span>Hébergement et transferts</h2>
-    <p>Le site est hébergé par Vercel Inc. (États-Unis). Les messages envoyés via le formulaire sont transmis par courrier électronique. En nous contactant, vous acceptez ce mode de transmission.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">08</span>Sécurité</h2>
-    <p>Nous mettons en œuvre des mesures techniques et organisationnelles raisonnables afin de protéger vos données contre tout accès, altération ou divulgation non autorisés.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">09</span>Vos droits</h2>
-    <p>Conformément à la loi n°010-2004/AN, vous disposez d'un droit d'<strong>accès</strong>, de <strong>rectification</strong>, d'<strong>opposition</strong> et de <strong>suppression</strong> de vos données. Pour exercer ces droits, écrivez-nous à <a href="mailto:alphaeomegagold@gmail.com">alphaeomegagold@gmail.com</a> en précisant votre demande.</p>
-    <p>Vous pouvez également introduire une réclamation auprès de la <strong>Commission de l'Informatique et des Libertés (CIL)</strong> du Burkina Faso.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">10</span>Modifications</h2>
-    <p>La présente politique peut être mise à jour à tout moment. La date de dernière mise à jour figure en tête de page.</p>
-  </section>
-</main>
+<!-- ENGLISH -->
+<div data-lang="en" hidden>
+  <div class="head">
+    <div class="eyebrow">Data protection</div>
+    <h1>Privacy policy</h1>
+    <div class="updated">Last updated: July 1, 2026</div>
+  </div>
+  <main>
+    <section>
+      <p>Alpha et Oméga Gold attaches great importance to the protection of your personal data. This policy is established in accordance with <strong>law n°010-2004/AN of 20 April 2004 on the protection of personal data</strong> in Burkina Faso and with the regulations of the <strong>Commission de l'Informatique et des Libertés (CIL)</strong>.</p>
+    </section>
+    <section>
+      <h2><span class="n">01</span>Data controller</h2>
+      <p>The data controller is <strong>Alpha et Oméga Gold</strong>, located at 06 BP 9309 Ouagadougou 06, Burkina Faso — <a href="mailto:alphaeomegagold@gmail.com">alphaeomegagold@gmail.com</a>, phone +226 68 00 00 50 / 65 00 00 50.</p>
+    </section>
+    <section>
+      <h2><span class="n">02</span>Data collected</h2>
+      <p>We only collect the data you voluntarily provide via the contact form:</p>
+      <ul>
+        <li>Name;</li>
+        <li>Email address;</li>
+        <li>Phone number (optional);</li>
+        <li>Subject and content of your message.</li>
+      </ul>
+      <p>No sensitive data is requested. The site does not carry out any profiling or automated collection for advertising purposes.</p>
+    </section>
+    <section>
+      <h2><span class="n">03</span>Purposes and legal basis</h2>
+      <p>The data is processed for the sole purpose of <strong>responding to your requests for information, quotes or partnership</strong>. The legal basis for processing is your <strong>consent</strong>, expressed by voluntarily submitting the form.</p>
+    </section>
+    <section>
+      <h2><span class="n">04</span>Recipients</h2>
+      <p>Your data is intended exclusively for the authorised staff of Alpha et Oméga Gold responsible for handling your request. It is <strong>neither sold, rented, nor transferred</strong> to third parties for commercial purposes.</p>
+    </section>
+    <section>
+      <h2><span class="n">05</span>Retention period</h2>
+      <p>The data is kept for as long as necessary to process your request, then archived or deleted within a maximum of three (3) years from the last contact, unless otherwise required by law.</p>
+    </section>
+    <section>
+      <h2><span class="n">06</span>Cookies and local storage</h2>
+      <p>The site uses <strong>no advertising cookies or analytics trackers</strong>. Only local storage (<em>localStorage</em>) in your browser keeps your language preference (French / English). This information stays on your device and is not sent to Alpha et Oméga Gold.</p>
+    </section>
+    <section>
+      <h2><span class="n">07</span>Hosting and transfers</h2>
+      <p>The site is hosted by Vercel Inc. (United States). Messages sent via the form are transmitted by email. By contacting us, you accept this method of transmission.</p>
+    </section>
+    <section>
+      <h2><span class="n">08</span>Security</h2>
+      <p>We implement reasonable technical and organisational measures to protect your data against any unauthorised access, alteration or disclosure.</p>
+    </section>
+    <section>
+      <h2><span class="n">09</span>Your rights</h2>
+      <p>In accordance with law n°010-2004/AN, you have the right to <strong>access</strong>, <strong>rectify</strong>, <strong>object to</strong> and <strong>delete</strong> your data. To exercise these rights, write to us at <a href="mailto:alphaeomegagold@gmail.com">alphaeomegagold@gmail.com</a>, specifying your request.</p>
+      <p>You may also file a complaint with the <strong>Commission de l'Informatique et des Libertés (CIL)</strong> of Burkina Faso.</p>
+    </section>
+    <section>
+      <h2><span class="n">10</span>Changes</h2>
+      <p>This policy may be updated at any time. The last update date is shown at the top of the page.</p>
+    </section>
+  </main>
+</div>
 
 <footer>
-  <div><a href="/">Accueil</a> · <a href="/mentions-legales.html">Mentions légales</a></div>
+  <div><a href="/" data-fr="Accueil" data-en="Home">Accueil</a> · <a href="/mentions-legales.html" data-fr="Mentions légales" data-en="Legal notice">Mentions légales</a></div>
   <div class="cop">© <span id="yr">2026</span> ALPHA ET OMEGA GOLD — Ouagadougou, Burkina Faso</div>
 </footer>
-<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+<script>
+(function(){
+  var KEY='aog_lang', T={fr:"Politique de confidentialité — ALPHA ET OMEGA GOLD",en:"Privacy policy — ALPHA ET OMEGA GOLD"};
+  var btn=document.getElementById('langBtn');
+  var lang=(function(){try{return localStorage.getItem(KEY)==='en'?'en':'fr';}catch(e){return 'fr';}})();
+  function apply(l){
+    lang=l; try{localStorage.setItem(KEY,l);}catch(e){}
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-lang]').forEach(function(el){el.hidden=(el.getAttribute('data-lang')!==l);});
+    document.querySelectorAll('[data-fr]').forEach(function(el){el.textContent=el.getAttribute('data-'+l);});
+    if(btn)btn.textContent=(l==='fr')?'EN':'FR';
+    document.title=T[l];
+  }
+  if(btn)btn.addEventListener('click',function(){apply(lang==='fr'?'en':'fr');});
+  apply(lang);
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
 </body>
 </html>

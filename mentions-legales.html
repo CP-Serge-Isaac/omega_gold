@@ -16,13 +16,17 @@
 <style>
 :root{--bg:#faf8f3;--dark:#141c18;--gold:#96700f;--gold-l:#caa03a;--w:#15120e;--g:#423b33;--gd:#5e564c;--b:rgba(150,112,15,.16);--se:'Cormorant Garamond',Georgia,serif;--di:'Italiana',Georgia,serif;--bo:'Manrope',system-ui,sans-serif}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--w);font-family:var(--bo);font-weight:400;line-height:1.75;-webkit-font-smoothing:antialiased}
 a{color:var(--gold);text-underline-offset:3px}a:hover{color:var(--gold-l)}
 img{max-width:100%;display:block}
-.topbar{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:1rem 6%;position:sticky;top:0;z-index:10}
+.topbar{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:1rem 6%;position:sticky;top:0;z-index:10;gap:1rem;flex-wrap:wrap}
 .topbar .logo img{height:46px;width:auto;display:block}
+.tb-right{display:flex;align-items:center;gap:1.2rem}
 .topbar .home{color:rgba(255,255,255,.8);text-decoration:none;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase}
 .topbar .home:hover{color:var(--gold-l)}
+.lang-switch{border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-family:var(--bo);font-size:.7rem;letter-spacing:.12em;font-weight:500;padding:.35rem .7rem;border-radius:20px;cursor:pointer;text-transform:uppercase;transition:all .3s}
+.lang-switch:hover{background:var(--gold);border-color:var(--gold)}
 .head{padding:4.5rem 6% 2.5rem;max-width:900px;margin:0 auto}
 .eyebrow{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1rem}
 h1{font-family:var(--se);font-weight:400;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;margin-bottom:.6rem}
@@ -35,7 +39,6 @@ p{margin-bottom:.9rem;color:var(--g)}
 ul{margin:.4rem 0 .9rem 1.2rem;color:var(--g)}li{margin-bottom:.4rem}
 strong{color:var(--w);font-weight:500}
 .dl{list-style:none;margin:0}.dl li{margin-bottom:.5rem}.dl b{color:var(--w);font-weight:500;display:inline-block;min-width:180px}
-.note{background:rgba(150,112,15,.06);border-left:3px solid var(--gold);padding:1rem 1.2rem;font-size:.9rem;color:var(--gd);border-radius:0 4px 4px 0;margin-top:1rem}
 footer{background:var(--dark);color:rgba(255,255,255,.55);padding:2.5rem 6%;text-align:center;font-size:.82rem}
 footer a{color:rgba(255,255,255,.7);text-decoration:none;margin:0 .6rem}footer a:hover{color:var(--gold-l)}
 footer .cop{margin-top:1rem;font-size:.72rem;color:rgba(255,255,255,.35)}
@@ -45,65 +48,129 @@ footer .cop{margin-top:1rem;font-size:.72rem;color:rgba(255,255,255,.35)}
 <body>
 <div class="topbar">
   <a href="/" class="logo" aria-label="Accueil"><img src="assets/logo-light.png" alt="Alpha & Oméga Gold"></a>
-  <a href="/" class="home">← Retour à l'accueil</a>
+  <div class="tb-right">
+    <a href="/" class="home" data-fr="← Retour à l'accueil" data-en="← Back to home">← Retour à l'accueil</a>
+    <button class="lang-switch" id="langBtn" aria-label="Changer de langue">EN</button>
+  </div>
 </div>
 
-<div class="head">
-  <div class="eyebrow">Informations légales</div>
-  <h1>Mentions légales</h1>
-  <div class="updated">Dernière mise à jour : 1<sup>er</sup> juillet 2026</div>
+<!-- FRANÇAIS -->
+<div data-lang="fr">
+  <div class="head">
+    <div class="eyebrow">Informations légales</div>
+    <h1>Mentions légales</h1>
+    <div class="updated">Dernière mise à jour : 1<sup>er</sup> juillet 2026</div>
+  </div>
+  <main>
+    <section>
+      <h2><span class="n">01</span>Éditeur du site</h2>
+      <ul class="dl">
+        <li><b>Dénomination</b> ALPHA ET OMEGA GOLD</li>
+        <li><b>Activité</b> Intermédiation aurifère — travaux miniers, recherche &amp; exploitation, achat d'or</li>
+        <li><b>Forme juridique</b> [à compléter par l'entreprise]</li>
+        <li><b>Siège social</b> 06 BP 9309 Ouagadougou 06, Burkina Faso</li>
+        <li><b>Téléphone</b> +226 68 00 00 50 / 65 00 00 50</li>
+        <li><b>Courriel</b> <a href="mailto:alphaeomegagold@gmail.com">alphaeomegagold@gmail.com</a></li>
+        <li><b>Directeur de la publication</b> Le représentant légal d'Alpha et Oméga Gold</li>
+      </ul>
+    </section>
+    <section>
+      <h2><span class="n">02</span>Hébergement</h2>
+      <p>Le site est hébergé par <strong>Vercel Inc.</strong>, 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis — <a href="https://vercel.com" rel="noopener" target="_blank">vercel.com</a>.</p>
+    </section>
+    <section>
+      <h2><span class="n">03</span>Objet du site</h2>
+      <p>Le présent site est un site vitrine présentant les activités d'Alpha et Oméga Gold dans le secteur minier et aurifère au Burkina Faso. Il ne constitue pas une plateforme de vente en ligne. Les informations affichées, notamment le cours de l'or, sont fournies à titre indicatif et n'ont aucune valeur contractuelle.</p>
+    </section>
+    <section>
+      <h2><span class="n">04</span>Propriété intellectuelle</h2>
+      <p>Le nom, le logo, la charte graphique, les textes et l'architecture du site sont la propriété d'Alpha et Oméga Gold ou sont utilisés avec l'autorisation de leurs titulaires. Toute reproduction, représentation ou exploitation, totale ou partielle, sans autorisation écrite préalable, est interdite et susceptible de constituer une contrefaçon.</p>
+      <p>Certaines photographies proviennent de banques d'images libres et demeurent la propriété de leurs auteurs respectifs.</p>
+    </section>
+    <section>
+      <h2><span class="n">05</span>Responsabilité</h2>
+      <p>Alpha et Oméga Gold s'efforce d'assurer l'exactitude des informations diffusées mais ne saurait être tenue responsable des erreurs, omissions ou d'une indisponibilité temporaire du site. Le cours de l'or affiché provient d'une source tierce et est communiqué sans garantie d'exactitude ni d'actualisation en temps réel.</p>
+    </section>
+    <section>
+      <h2><span class="n">06</span>Données personnelles</h2>
+      <p>Le traitement des données collectées via le formulaire de contact est décrit dans notre <a href="/confidentialite.html">Politique de confidentialité</a>, conforme à la loi n°010-2004/AN du 20 avril 2004 portant protection des données à caractère personnel au Burkina Faso.</p>
+    </section>
+    <section>
+      <h2><span class="n">07</span>Droit applicable</h2>
+      <p>Les présentes mentions légales sont régies par le droit burkinabè, notamment la loi n°045-2009/AN du 10 novembre 2009 portant réglementation des services et des transactions électroniques au Burkina Faso. Tout litige relatif à l'utilisation du site relève de la compétence des tribunaux de Ouagadougou.</p>
+    </section>
+  </main>
 </div>
 
-<main>
-  <section>
-    <h2><span class="n">01</span>Éditeur du site</h2>
-    <ul class="dl">
-      <li><b>Dénomination</b> ALPHA ET OMEGA GOLD</li>
-      <li><b>Activité</b> Intermédiation aurifère — travaux miniers, recherche &amp; exploitation, achat d'or</li>
-      <li><b>Forme juridique</b> [à compléter par l'entreprise]</li>
-      <li><b>Siège social</b> 06 BP 9309 Ouagadougou 06, Burkina Faso</li>
-      <li><b>Téléphone</b> +226 68 00 00 50 / 65 00 00 50</li>
-      <li><b>Courriel</b> <a href="mailto:alphaeomegagold@gmail.com">alphaeomegagold@gmail.com</a></li>
-      <li><b>Directeur de la publication</b> Le représentant légal d'Alpha et Oméga Gold</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2><span class="n">02</span>Hébergement</h2>
-    <p>Le site est hébergé par <strong>Vercel Inc.</strong>, 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis — <a href="https://vercel.com" rel="noopener" target="_blank">vercel.com</a>.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">03</span>Objet du site</h2>
-    <p>Le présent site est un site vitrine présentant les activités d'Alpha et Oméga Gold dans le secteur minier et aurifère au Burkina Faso. Il ne constitue pas une plateforme de vente en ligne. Les informations affichées, notamment le cours de l'or, sont fournies à titre indicatif et n'ont aucune valeur contractuelle.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">04</span>Propriété intellectuelle</h2>
-    <p>Le nom, le logo, la charte graphique, les textes et l'architecture du site sont la propriété d'Alpha et Oméga Gold ou sont utilisés avec l'autorisation de leurs titulaires. Toute reproduction, représentation ou exploitation, totale ou partielle, sans autorisation écrite préalable, est interdite et susceptible de constituer une contrefaçon.</p>
-    <p>Certaines photographies proviennent de banques d'images libres et demeurent la propriété de leurs auteurs respectifs.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">05</span>Responsabilité</h2>
-    <p>Alpha et Oméga Gold s'efforce d'assurer l'exactitude des informations diffusées mais ne saurait être tenue responsable des erreurs, omissions ou d'une indisponibilité temporaire du site. Le cours de l'or affiché provient d'une source tierce et est communiqué sans garantie d'exactitude ni d'actualisation en temps réel.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">06</span>Données personnelles</h2>
-    <p>Le traitement des données collectées via le formulaire de contact est décrit dans notre <a href="/confidentialite.html">Politique de confidentialité</a>, conforme à la loi n°010-2004/AN du 20 avril 2004 portant protection des données à caractère personnel au Burkina Faso.</p>
-  </section>
-
-  <section>
-    <h2><span class="n">07</span>Droit applicable</h2>
-    <p>Les présentes mentions légales sont régies par le droit burkinabè, notamment la loi n°045-2009/AN du 10 novembre 2009 portant réglementation des services et des transactions électroniques au Burkina Faso. Tout litige relatif à l'utilisation du site relève de la compétence des tribunaux de Ouagadougou.</p>
-  </section>
-</main>
+<!-- ENGLISH -->
+<div data-lang="en" hidden>
+  <div class="head">
+    <div class="eyebrow">Legal information</div>
+    <h1>Legal notice</h1>
+    <div class="updated">Last updated: July 1, 2026</div>
+  </div>
+  <main>
+    <section>
+      <h2><span class="n">01</span>Site publisher</h2>
+      <ul class="dl">
+        <li><b>Name</b> ALPHA ET OMEGA GOLD</li>
+        <li><b>Activity</b> Gold intermediation — mining works, exploration &amp; operation, gold buying</li>
+        <li><b>Legal form</b> [to be completed by the company]</li>
+        <li><b>Registered office</b> 06 BP 9309 Ouagadougou 06, Burkina Faso</li>
+        <li><b>Phone</b> +226 68 00 00 50 / 65 00 00 50</li>
+        <li><b>Email</b> <a href="mailto:alphaeomegagold@gmail.com">alphaeomegagold@gmail.com</a></li>
+        <li><b>Publication director</b> The legal representative of Alpha et Oméga Gold</li>
+      </ul>
+    </section>
+    <section>
+      <h2><span class="n">02</span>Hosting</h2>
+      <p>This site is hosted by <strong>Vercel Inc.</strong>, 340 S Lemon Ave #4133, Walnut, CA 91789, USA — <a href="https://vercel.com" rel="noopener" target="_blank">vercel.com</a>.</p>
+    </section>
+    <section>
+      <h2><span class="n">03</span>Purpose of the site</h2>
+      <p>This website is a showcase site presenting the activities of Alpha et Oméga Gold in the mining and gold sector in Burkina Faso. It is not an online sales platform. The information displayed, in particular the gold price, is provided for indicative purposes only and has no contractual value.</p>
+    </section>
+    <section>
+      <h2><span class="n">04</span>Intellectual property</h2>
+      <p>The name, logo, visual identity, texts and architecture of the site are the property of Alpha et Oméga Gold or are used with the permission of their owners. Any reproduction, representation or use, in whole or in part, without prior written authorisation, is prohibited and may constitute infringement.</p>
+      <p>Some photographs come from free image banks and remain the property of their respective authors.</p>
+    </section>
+    <section>
+      <h2><span class="n">05</span>Liability</h2>
+      <p>Alpha et Oméga Gold strives to ensure the accuracy of the information published but cannot be held liable for errors, omissions or temporary unavailability of the site. The gold price shown comes from a third-party source and is provided without any guarantee of accuracy or real-time updating.</p>
+    </section>
+    <section>
+      <h2><span class="n">06</span>Personal data</h2>
+      <p>The processing of data collected via the contact form is described in our <a href="/confidentialite.html">Privacy Policy</a>, compliant with law n°010-2004/AN of 20 April 2004 on the protection of personal data in Burkina Faso.</p>
+    </section>
+    <section>
+      <h2><span class="n">07</span>Applicable law</h2>
+      <p>These legal notices are governed by the law of Burkina Faso, in particular law n°045-2009/AN of 10 November 2009 regulating electronic services and transactions in Burkina Faso. Any dispute relating to the use of the site falls under the jurisdiction of the courts of Ouagadougou.</p>
+    </section>
+  </main>
+</div>
 
 <footer>
-  <div><a href="/">Accueil</a> · <a href="/confidentialite.html">Politique de confidentialité</a></div>
+  <div><a href="/" data-fr="Accueil" data-en="Home">Accueil</a> · <a href="/confidentialite.html" data-fr="Politique de confidentialité" data-en="Privacy policy">Politique de confidentialité</a></div>
   <div class="cop">© <span id="yr">2026</span> ALPHA ET OMEGA GOLD — Ouagadougou, Burkina Faso</div>
 </footer>
-<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+<script>
+(function(){
+  var KEY='aog_lang', T={fr:"Mentions légales — ALPHA ET OMEGA GOLD",en:"Legal notice — ALPHA ET OMEGA GOLD"};
+  var btn=document.getElementById('langBtn');
+  var lang=(function(){try{return localStorage.getItem(KEY)==='en'?'en':'fr';}catch(e){return 'fr';}})();
+  function apply(l){
+    lang=l; try{localStorage.setItem(KEY,l);}catch(e){}
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-lang]').forEach(function(el){el.hidden=(el.getAttribute('data-lang')!==l);});
+    document.querySelectorAll('[data-fr]').forEach(function(el){el.textContent=el.getAttribute('data-'+l);});
+    if(btn)btn.textContent=(l==='fr')?'EN':'FR';
+    document.title=T[l];
+  }
+  if(btn)btn.addEventListener('click',function(){apply(lang==='fr'?'en':'fr');});
+  apply(lang);
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
